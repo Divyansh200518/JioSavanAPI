@@ -20,9 +20,9 @@ def home():
 def search():
     query = request.args.get('query')
     if query:
-        search = searchSong(user_query)
+        search = searchSong(query)
         result = song(id=search[0]["id"])['audioUrls']["320_KBPS"]
-        return jsonify('Page'= 'Request', 'Message'= f"Successfully got the request for {user_query}",'answer'=result)
+        return jsonify('Page'= 'Request', 'Message'= f"Successfully got the request for {query}",'answer'=result)
     else:
         error = {
             "status": False,
