@@ -22,7 +22,7 @@ def search():
     if query:
         search = searchSong(user_query)
         result = song(id=search[0]["id"])['audioUrls']["320_KBPS"]
-        return jsonify({"result":result})
+        return jsonify('Page'= 'Request', 'Message'= f"Successfully got the request for {user_query}",'answer'=result)
     else:
         error = {
             "status": False,
