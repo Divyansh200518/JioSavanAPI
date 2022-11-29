@@ -29,7 +29,7 @@ def search():
             artName = songData['primaryArtists']
             return jsonify({'songLink': songLink, 'songName': songName,'songBanner':songBanner,'artName':artName})
         else:
-            return jsonify({'searchQuery':query})
+            return jsonify({'searchQuery':query,'searchedQuery':search})
         
     else:
         error = {
