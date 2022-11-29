@@ -21,8 +21,12 @@ def search():
     query = request.args.get('query')
     if query:
         search = searchSong(query)
-        result = song(id=search[0]["id"])['audioUrls']["320_KBPS"]
-        return jsonify({'Page': 'Request', 'Message': f"Successfully got the request for {query}",'answer':result})
+        songLink = song(id=search[0]["id"])['audioUrls']["320_KBPS"]
+        songName = song(id=search[0]["id"])['songName']
+        songBanner = song(id=search[0]["id"])['imagesUrls']['500x500']
+        artName = song(id=search[0]["id"])['primaryArtists']
+        
+        return jsonify({'songLink': songLink, 'songName': songName,'songBanner':songBanner,'artName':artName})
     else:
         error = {
             "status": False,
