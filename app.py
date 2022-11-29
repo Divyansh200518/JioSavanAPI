@@ -21,10 +21,11 @@ def search():
     query = request.args.get('query')
     if query:
         search = searchSong(query)
-        songLink = song(id=search[0]["id"])['audioUrls']["320_KBPS"]
-        songName = song(id=search[0]["id"])['songName']
-        songBanner = song(id=search[0]["id"])['imagesUrls']['500x500']
-        artName = song(id=search[0]["id"])['primaryArtists']
+        songData = song(id=search[0]["id"])
+        songLink = songData['audioUrls']["320_KBPS"]
+        songName = songData['songName']
+        songBanner = songData['imagesUrls']['500x500']
+        artName = songData['primaryArtists']
         
         return jsonify({'songLink': songLink, 'songName': songName,'songBanner':songBanner,'artName':artName})
     else:
