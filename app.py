@@ -22,12 +22,15 @@ def search():
     if query:
         search = searchSong(query)
         songData = song(id=search[0]["id"])
-        songLink = songData['audioUrls']["320_KBPS"]
-        songName = songData['songName']
-        songBanner = songData['imagesUrls']['500x500']
-        artName = songData['primaryArtists']
+        if len(songData) > 1:
+            songLink = songData['audioUrls']["320_KBPS"]
+            songName = songData['songName']
+            songBanner = songData['imagesUrls']['500x500']
+            artName = songData['primaryArtists']
+            return jsonify({'songLink': songLink, 'songName': songName,'songBanner':songBanner,'artName':artName})
+        else:
+            return jsonify({'searchQuery':query})
         
-        return jsonify({'songLink': songLink, 'songName': songName,'songBanner':songBanner,'artName':artName})
     else:
         error = {
             "status": False,
