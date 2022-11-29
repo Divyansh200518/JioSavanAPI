@@ -21,8 +21,8 @@ def search():
     query = request.args.get('query')
     if query:
         search = searchSong(query)
-        songData = song(id=search[0]["id"])
-        if len(songData) > 1:
+        if len(search) > 0:
+            songData = song(id=search[0]["id"])
             songLink = songData['audioUrls']["320_KBPS"]
             songName = songData['songName']
             songBanner = songData['imagesUrls']['500x500']
