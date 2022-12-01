@@ -12,6 +12,7 @@ CORS(app)
 
 @app.route('/')
 def search():
+    dataArray = []
     query = request.args.get('query')
     if query:
         search = searchSong(query)
