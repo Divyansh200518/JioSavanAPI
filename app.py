@@ -10,13 +10,7 @@ app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET", 'thankyoutonystark#weloveyou3000')
 CORS(app)
 
-
 @app.route('/')
-def home():
-    return redirect("https://cyberboysumanjay.github.io/JioSaavnAPI/")
-
-
-@app.route('/song/')
 def search():
     query = request.args.get('query')
     if query:
