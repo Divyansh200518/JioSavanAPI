@@ -1,12 +1,10 @@
 from flask import Flask, request, redirect, jsonify, json
-from jiosaavn.Sync import searchSong
+from jiosaavn.Sync import searchSong,song
 import os
 import time
-from jiosaavn.Sync import song
 from flask_cors import CORS
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET", 'thankyoutonystark#weloveyou3000')
 CORS(app)
 
 @app.route('/')
@@ -25,6 +23,7 @@ def search():
                 songName = songData['songName']
                 songBanner = songData['imagesUrls']['500x500']
                 artName = songData['primaryArtists']
+                print(artName)
                 dataArray.append({'songLink': songLink, 'songName': songName,'songBanner':songBanner,'artName':artName})
             return jsonify(dataArray)
         else:
