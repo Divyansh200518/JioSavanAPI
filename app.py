@@ -1,9 +1,6 @@
 from flask import Flask, request, redirect, jsonify, json
-import time
 from jiosaavn.Sync import searchSong
 from jiosaavn.Sync import song
-import os
-from traceback import print_exc
 from flask_cors import CORS
 
 app = Flask(__name__)
